@@ -1,0 +1,6 @@
+<?xml version='1.0'?>
+<testsuites>
+  <testsuite name='inspec-aws-vm' tests='1' failed='0'>
+    <testcase name='EC2 Instance i-00f15a5c34a317ba1 should exist' classname='inspec-aws-vm.Anonymous' target='aws://' time='1.541011'/>
+  </testsuite>
+</testsuites>
