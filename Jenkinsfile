@@ -3,6 +3,7 @@ pipeline {
     environment { 
         AWS_ACCESS_KEY_ID = credentials('dev')
         AWS_SECRET_ACCESS_KEY = credentials('dev')
+        AWS_REGION = "us-east-1"
     }
     stages {
         stage('Terraform Init') {
