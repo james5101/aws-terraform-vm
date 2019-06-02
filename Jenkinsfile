@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage ('Git Checkout') {
             steps {
+                cleanWs()
                 checkout([$class: 'GitSCM', branches: [[name :'*/master', name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/james5101/aws-terraform-vm']]])
             }
         }
