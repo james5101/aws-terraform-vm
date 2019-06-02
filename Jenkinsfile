@@ -6,6 +6,11 @@ pipeline {
         AWS_REGION = "us-east-1"
     }
     stages {
+        stage ('Git Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name :'*/master', name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/james5101/aws-terraform-vm']]])
+            }
+        }
         stage('Terraform Init') {
             steps {
                 sh 'echo {$AWS_ACCESS_KEY_ID}'
