@@ -17,6 +17,11 @@ pipeline {
                 sh 'terraform apply -auto-approve'
             }
         }
+        stage('Run InSpec'){
+            steps {
+                sh 'inspec exec inspec-aws-vm/ -t aws:// --reporter cli'
+            }
+        }
         stage('Terraform Destroy'){
             steps {
                 input "Destroy infra?"
