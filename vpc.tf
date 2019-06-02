@@ -1,10 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket = "terraform-state-lab10"
-    key    = "workspace/vpc/vpc-vm"
-    region = "us-east-1"
-  }
-}
 
 resource "aws_vpc" "vpc1" {
   cidr_block = "10.0.0.0/16"
@@ -39,7 +32,7 @@ resource "aws_route_table" "route-table" {
     gateway_id = "${aws_internet_gateway.gw.id}"
   }
 
-  tags {
+  tags = {
     Name = "test-env-route-table"
   }
 }

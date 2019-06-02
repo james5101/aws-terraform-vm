@@ -10,9 +10,7 @@ terraform {
   }
 }
 
-data "template_file" "user_data" {
-  template = "${file("user-data.tpl")}"
-}
+
 
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -38,7 +36,7 @@ resource "aws_instance" "ubuntu" {
   user_data     = <<EOF
 
     #cloud-config
-    hostname: "${var.vm_name}" 
+    hostname: "jamestest" 
 
 
     manage_etc_hosts: true
@@ -48,9 +46,9 @@ resource "aws_instance" "ubuntu" {
     - ls
 EOF
 
-  tags {
+  tags = {
     Billing = "IT"
-    Name    = "${var.vm_name}"
+    Name    = "jamestest"
   }
 
   vpc_security_group_ids = ["${aws_security_group.asg1.id}"]
